@@ -4,7 +4,7 @@ Esta guía te ayudará a configurar **Oh My Posh** en tu subsistema Linux (WSL/U
 
 ---
 
-##  0. Requisitos Previos
+## 0. Requisitos Previos
 
 *   **WSL instalado** (Ubuntu preferiblemente).
 *   **Windows Terminal** como emulador de terminal.
@@ -28,6 +28,7 @@ y ejecuta:
 ```bash
 oh-my-posh --version
 ```
+
 ---
 
 ## 2. Configuración de Fuentes (Nerd Fonts)
@@ -109,6 +110,46 @@ Haremos que Oh My Posh y los iconos (`lsd`) carguen al inicio.
 
 Recarga tu configuración actual para ver los cambios inmediatamente:
 
+```bash
+source ~/.bashrc
+```
+
+---
+
+# Opcional
+## Configurar Neofetch
+
+Neofetch muestra información del sistema en la terminal de una manera estética (similar a winfetch en Windows).
+
+![alt text](assets/neofetch.png)
+
+### 1. Instalación
+Actualiza tus repositorios e instala Neofetch:
+
+```bash
+sudo apt update
+sudo apt install neofetch -y
+```
+
+### 2. Configuración en .bashrc
+Para que Neofetch se ejecute automáticamente al abrir la terminal:
+
+1. Abre tu `.bashrc`:
+    ```bash
+    nano ~/.bashrc
+    ```
+
+2. Agrega la siguiente línea al final del archivo:
+
+    ```bash
+    # --- Configuración de Neofetch ---
+    neofetch
+    ```
+
+3. Guarda (`Ctrl + O`, `Enter`) y sal (`Ctrl + X`).
+
+### 3. Aplicar cambios
+Recarga tu configuración:
 ```bash
 source ~/.bashrc
 ```

@@ -112,4 +112,40 @@ Para ver los cambios, recarga tu perfil ejecutando:
 . $PROFILE
 ```
 
+---
+
+# Opcional
+## Configurar Winfetch
+
+![alt text](assets/image.png)
+
+```powershell
+Install-Script winfetch
+```
+
+Abre el perfil de PowerShell con el bloc de notas:
+
+```powershell
+notepad $PROFILE
+```
+
+Copia y pega el siguiente bloque de código:
+
+```powershell
+# --- Configuración de Winfetch ---
+
+# 1. Iniciar Winfetch
+winfetch
+```
+
+Guarda el archivo y cierra el bloc de notas.
+
+Para ver los cambios, recarga tu perfil ejecutando:
+
+```powershell
+. $PROFILE
+```
+
+Repositorio de Winfetch: [https://github.com/lptstr/winfetch](https://github.com/lptstr/winfetch)
+
 ¡Listo! Tu terminal debería verse increíble ahora.

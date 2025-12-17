@@ -133,13 +133,29 @@ code $env:USERPROFILE\.config\winfetch\config.ps1
 ```
 Al final cambia el codigo por:
 ```powershell
-    $cpustyle     = 'bar'
+    function info_gpu_main {
+        $gpu = Get-CimInstance Win32_VideoController |
+            Where-Object {
+                $_.Name -notmatch "DisplayLink|USB|Remote|Virtual"
+            } |
+            Select-Object -First 1
+
+        if ($gpu) {
+            return @{
+                title   = "GPU"
+                content = $gpu.Name
+            }
+        }
+    }
+
+
+    $cpustyle     = 'bartext'
     $memorystyle  = 'bartext'
     $diskstyle    = 'bartext'
     $batterystyle = 'bartext'
-    
+
     $BarLength = 20
-    
+
     @(
         "title"
         "dashes"
@@ -147,9 +163,8 @@ Al final cambia el codigo por:
         "computer"
         "kernel"
         "uptime"
-        "gpu"
+        "gpu_main"
         "cpu_usage"
-        #"processes"
         "memory"
         "disk"
         "battery"
@@ -179,6 +194,32 @@ Para ver los cambios, recarga tu perfil ejecutando:
 
 ```powershell
 . $PROFILE
+```
+
+## Opcional
+
+Ejecutar Winfetch al limpiar terminal
+ 
+```Powershell
+notepad $PROFILE
+```
+
+Agregar al archivo
+
+```Powershell
+# Eliminar alias original
+Remove-Item Alias:cls -ErrorAction SilentlyContinue
+
+# Reemplazar cls
+function cls {
+    Clear-Host
+    winfetch
+}
+```
+
+Reinicia la terminal y limpia con:
+```Powershell
+cls
 ```
 
 Repositorio de Winfetch: [https://github.com/lptstr/winfetch](https://github.com/lptstr/winfetch)

@@ -123,6 +123,41 @@ Para ver los cambios, recarga tu perfil ejecutando:
 Install-Script winfetch
 ```
 
+Abre el archivo de configuracion de winfetch con notepad
+```powershell
+notepad $env:USERPROFILE\.config\winfetch\config.ps1
+```
+O con tu editor de codigo
+```powershell
+code $env:USERPROFILE\.config\winfetch\config.ps1
+```
+Al final cambia el codigo por:
+```powershell
+    $cpustyle     = 'bar'
+    $memorystyle  = 'bartext'
+    $diskstyle    = 'bartext'
+    $batterystyle = 'bartext'
+    
+    $BarLength = 20
+    
+    @(
+        "title"
+        "dashes"
+        "os"
+        "computer"
+        "kernel"
+        "uptime"
+        "gpu"
+        "cpu_usage"
+        #"processes"
+        "memory"
+        "disk"
+        "battery"
+        "blank"
+        "colorbar"
+    )
+```
+
 Abre el perfil de PowerShell con el bloc de notas:
 
 ```powershell
